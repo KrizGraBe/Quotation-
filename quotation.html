@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Glass & Aluminum Quotation (PHP)</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 400px; margin: auto; }
+    label, input, select { display: block; margin-bottom: 10px; width: 100%; }
+    button { width: 100%; padding: 10px; background: steelblue; color: white; border: none; }
+    #result { margin-top: 20px; font-weight: bold; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+
+  <h2>Quotation Calculator (₱)</h2>
+
+  <label>Width (meters):</label>
+  <input type="number" id="width" step="0.01">
+
+  <label>Height (meters):</label>
+  <input type="number" id="height" step="0.01">
+
+  <label>Price per ft² (₱):</label>
+  <input type="number" id="price" step="0.01">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const width = parseFloat(document.getElementById("width").value);
+      const height = parseFloat(document.getElementById("height").value);
+      const price = parseFloat(document.getElementById("price").value);
+      if (isNaN(width) || isNaN(height) || isNaN(price)) {
+        document.getElementById("result").innerText = "Please enter all fields.";
+        return;
+      }
+
+      const area_m2 = width * height;
+      const area_ft2 = area_m2 * 10.7639;
+      const cost = area_ft2 * price;
+
+      document.getElementById("result").innerText = `Total Cost: ₱${cost.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
