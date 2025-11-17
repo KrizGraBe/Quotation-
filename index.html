@@ -41,7 +41,8 @@
       const area_ft2 = area_m2 * 10.7639;
       const cost = area_ft2 * price;
 
-      document.getElementById("result").innerText = `Total Cost: ₱${cost.toFixed(2)}`;
+      document.getElementById("result").innerText = `Total Cost: ₱{cost.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`;
+``` = `Total Cost: ₱${cost.toFixed(2)}`;
     }
   </script>
 </body>
