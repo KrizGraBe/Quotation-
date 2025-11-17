@@ -28,21 +28,21 @@
   <div id="result"></div>
 
   <script>
-    function calculate() {
-      const width = parseFloat(document.getElementById("width").value);
-      const height = parseFloat(document.getElementById("height").value);
-      const price = parseFloat(document.getElementById("price").value);
-      if (isNaN(width) || isNaN(height) || isNaN(price)) {
-        document.getElementById("result").innerText = "Please enter all fields.";
-        return;
-      }
+function calculate() {
+  const width = parseFloat(document.getElementById("width").value);
+  const height = parseFloat(document.getElementById("height").value);
+  const price = parseFloat(document.getElementById("price").value);
 
-      const area_m2 = width * height;
-      const area_ft2 = area_m2 * 10.7639;
-      const cost = area_ft2 * price;
+  if (isNaN(width) || isNaN(height) || isNaN(price)) {
+    document.getElementById("result").innerText = "Please enter all fields.";
+    return;
+  }
 
-      document.getElementById("result").innerText = `Total Cost: ₱{cost.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`;
-``` = `Total Cost: ₱${cost.toFixed(2)}`;
+  const perimeter_m = (width + height) * 2;
+  const perimeter_ft = perimeter_m * 3.28084;
+  const cost = perimeter_ft * price;
+
+  document.getElementById("result").innerText = `Total Cost: ₱${cost.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`;
     }
   </script>
 </body>
